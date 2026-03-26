@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos 3D</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .nav-top {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--borde);
+        }
+        .nav-top a {
+            font-family: var(--fuente-titulo);
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            color: var(--texto-dim);
+            text-decoration: none;
+            padding: 0.85rem 1.25rem;
+            border-right: 1px solid var(--borde);
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-top a:hover {
+            background: var(--acento-pale);
+            color: var(--acento);
+        }
+        .nav-top a.activo {
+            color: var(--acento);
+            border-bottom: 2px solid var(--acento);
+            margin-bottom: -1px;
+        }
+
+        .ascii-box {
+            border-top: 1px solid var(--borde-dim);
+            padding: 3rem 0 1rem;
+            margin-top: 0rem;
+            overflow-x: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ascii {
+            font-family: monospace;
+            font-size: 0.7rem;
+            line-height: 1.3;
+            color: var(--acento-dim);
+            white-space: pre;
+        }
+
+        .mute-btn {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            z-index: 100;
+            background: var(--bg-card);
+            border: 1px solid var(--borde);
+            color: var(--acento);
+            font-family: var(--fuente-titulo);
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            padding: 0.45rem 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .mute-btn:hover { background: var(--acento-pale); color: var(--texto); }
+        .mute-btn.muted { color: var(--texto-dim); border-color: var(--borde-dim); }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-top">
+        <a href="../index.html">&#8592; INICIO</a>
+        <a href="3D.html" class="activo">3D</a>
+        <a href="videojuegos.html">VIDEOJUEGOS</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-titulo-bloque">
+            <h1>Proyectos<em>en Blender</em></h1>
+            <p class="hero-desc">Llevo un tiempo aprendiendo 3D con Blender y aquí voy a detallar el proceso detrás de 3 de mis ultimos proyectos.</p>
+        </div>
+    </header>
+
+    <main class="contenido">
+
+        <!-- ---------- OFICINA FNAF ----------- -->
+        <article class="proyecto">
+            <div class="proyecto-header">
+                <span class="proyecto-num">01</span>
+                <h2>Oficina FNAF</h2>
+            </div>
+
+            <p>Hace parte de un establecimiento más grande hecho para un tráiler de videojuego. El resto del establecimiento fue un trabajo colaborativo, por lo que no pienso tomar crédito único del sitio completo como tal, pero esta habitacion y todos sus props dentro de ella si los hice yo.</p>
+
+            <div class="imagen-wrapper">
+                <img src="../images/renders/oficina.png" alt="Render final de la oficina FNAF">
+                <div class="imagen-caption">Render final en Cycles</div>
+            </div>
+
+            <div class="bloque-tecnico">
+                <div class="texto">
+                    <p>Como era para una animación, la mayoría de objetos tenían controladores para animarlos sin afectar al modelo en sí (puertas, ventilador, palanca). Además se mantuvo la geometría al mínimo sin sacrificar calidad para un renderizado más rápido (aun asi tomo decadas).</p>
+                    <p>Al usar Cycles, pude añadir niebla volumétrica densa a la escena. Estos son los 2 cubos grandes que rodean la oficina: el grande es niebla general y el más pequeño simula polvo elevándose desde el piso.</p>
+                </div>
+                <div class="imagen-wrapper" style="margin:0;">
+                    <img src="../images/renders/oficinaEditor2.png" alt="Niebla volumétrica">
+                    <div class="imagen-caption">Niebla volumétrica</div>
+                </div>
+            </div>
+
+            <div class="imagen-wrapper">
+                <img src="../images/renders/oficinaEditor1.png" alt="Vista del editor con controladores">
+                <div class="imagen-caption">Controladores de animación</div>
+            </div>
+
+            <p class="nodos-titulo">NODOS DE COMPOSICIÓN</p>
+            <ul class="lista">
+                <li><strong>Vignette</strong> | oscuridad en los bordes de la imagen</li>
+                <li><strong>Tune Image</strong> | aumentar el contraste general</li>
+                <li><strong>Chromatic Aberration</strong> | aberración cromática en pantallas y luces</li>
+                <li><strong>Multiply</strong> | oscurecer la imagen</li>
+                <li><strong>Glare</strong> (x2) | halo alrededor del bombillo y rayitos de luz</li>
+                <li><strong>Despeckle</strong> | reducir el ruido</li>
+                <li><strong>RGB Curves</strong> | ajuste de tonos individuales, toque rojizo</li>
+                <li><strong>Posterize</strong> | quemar la paleta para cortes en el degradado, efecto cámara barata</li>
+                <li><strong>Lens Distortion</strong> | distorsión de cámara con movimiento</li>
+            </ul>
+
+            <div class="imagen-wrapper">
+                <img src="../images/renders/oficinaCompositor.png" alt="Árbol de nodos del compositor">
+                <div class="imagen-caption">Compositor de Blender (version alterna al render final)</div>
+            </div>
+        </article>
+
+        <!-- ---------- MONOCROMÁTICO ----------- -->
+        <article class="proyecto">
+            <div class="proyecto-header">
+                <span class="proyecto-num">02</span>
+                <h2>Monocromático</h2>
+            </div>
+
+            <p>Proyecto desarrollado para una mini jam en Itch.io con la temática "monocromático". En total tomó alrededor de una semana.</p>
+
+            <div class="imagen-wrapper">
+                <img src="../images/renders/monocromatico.png" alt="Render final monocromático">
+                <div class="imagen-caption">Render final en Cycles</div>
+            </div>
+
+            <div class="bloque-tecnico">
+                <div class="texto">
+                    <p>Seguramente el más complejo de los 3. Aunque no fue animado, el trabajo de iluminación fue eterno, quería rayos específicos atravesando la escena e iluminar ciertos elementos para resaltarlos, pero la niebla volumétrica hacía que tantas luces contaminaran el aire y sobresaturaran todo.</p>
+                    <p>Para aislar la luna usé un plano negro gigante y la alejé de la escena para poder ponerle una luz fuerte y que se vean las manchas sin contaminar la niebla. El pasto son múltiples sistemas de partículas de pelo, los árboles están pintados de negro para simular contraluz, y el 90% de las líneas visibles son luces.</p>
+                </div>
+                <div class="imagen-wrapper" style="margin:0;">
+                    <img src="../images/renders/monocromaEditor1.png" alt="Vista del editor monocromático">
+                    <div class="imagen-caption">Sistema de iluminación</div>
+                </div>
+            </div>
+
+            <p class="nodos-titulo">NODOS DE COMPOSICIÓN</p>
+            <ul class="lista">
+                <li><strong>Chromatic Aberration</strong> | aberración cromatica para las ramas desenfocadas</li>
+                <li><strong>Split Toning</strong> | partir los colores para que la luz sea amarillenta y acercarme un poco al efecto monocromático.</li>
+                <li><strong>Tune Image</strong> | más contraste, claridad y dureza para destellos y efecto pasto húmedo</li>
+                <li><strong>Posterize</strong> | el clásico &lt;3</li>
+                <li><strong>Lens Distortion</strong> | distorsión de cámara para evitar que se vea plana</li>
+                <li><strong>RGB Curves</strong> | unificar tonos para el efecto monocromático</li>
+                <li><strong>Color Balance</strong> | definir el tono final del monocroma</li>
+            </ul>
+
+            <div class="imagen-wrapper">
+                <img src="../images/renders/monocromaCompositor.png" alt="Arbol de nodos monocromatico">
+                <div class="imagen-caption">Compositor de Blender (version alterna al render final)</div>
+            </div>
+        </article>
+
+        <!-- --------- CHIBI ------- -->
+        <article class="proyecto">
+            <div class="proyecto-header">
+                <span class="proyecto-num">03</span>
+                <h2>Chibi</h2>
+            </div>
+
+            <p>El más simple de los 3, hecho para practicar modelado de personajes. Me inspiré en un personaje de Pinterest. Aunque no es tan complejo, me gusta bastante el resultado y me invente varias tecnicas para lograr el efecto deseado.</p>
+
+            <div class="imagen-wrapper">
+                <img src="../images/renders/chibi.png" alt="Render final chibi">
+                <div class="imagen-caption">Render final en EEVEE</div>
+            </div>
+
+            <div class="bloque-tecnico">
+                <div class="texto">
+                    <p>El personaje es low poly intencionalmente. El trabajo principal estuvo en lograr el efecto pixel art: usé un shader especial que permite controlar el color exacto de cada parte del shading (iluminado, intermedio, oscuro) y aplica algo de dithering en las transiciones.</p>
+                    <p>Los ojos fueron pintados a mano pero chocaban con el material pixel art, así que creé una copia del cuerpo con el mismo material y le apliqué alpha a todo lo que no estuviera pintado. Las montañas son planos esculpidos con material de ruido blanco y azul oscuro.</p>
+                </div>
+                <div class="imagen-wrapper" style="margin:0;">
+                    <img src="../images/renders/chibiEditor1.png" alt="Chibi en el editor">
+                    <div class="imagen-caption">Shader de pixel art en el editor</div>
+                </div>
+            </div>
+
+            <div class="imagen-wrapper">
+                <img src="../images/renders/chibiEditor2.png" alt="Editor de ojos del chibi">
+                <div class="imagen-caption">Ojos pintados sobre copia de la malla</div>
+            </div>
+
+            <p class="nodos-titulo">NODOS DE COMPOSICIÓN</p>
+            <ul class="lista">
+                <li><strong>Chromatic Aberration</strong> | mi otro amor <3</li>
+                <li><strong>Split Toning</strong> | resaltar la parte iluminada del personaje</li>
+                <li><strong>Tune Image</strong> | mayor protagonismo a las montañas con más contraste y dureza</li>
+                <li><strong>Vignette</strong> | resaltar al personaje en el centro</li>
+                <li><strong>Posterize</strong> | eliminar cualquier degradado suave que pudiera quedar</li>
+                <li><strong>Pixelate</strong> | pixelar la imagen para vender mas el efecto pixe-art</li>
+            </ul>
+
+            <div class="imagen-wrapper">
+                <img src="../images/renders/chibiCompositor.png" alt="Árbol de nodos chibi">
+                <div class="imagen-caption">Compositor de Blender</div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- ASCII -->
+    <div class="ascii-box">
+    <pre class="ascii">
+⠐⢢⠱⡙⢦⢓⠲⡰⢀⠆⢠⠐⠰⡈⠔⡂⠔⡀⠆⡰⢀⠆⡐⠠⢂⠰⠐⢂⠅⠂⠄⠠⠀⠄⠠⠀⠄⡀⠠⠀⠄⠐⡀⠎⠰⢁⠒⡈⠐⠠⠑⢈⠱⠈⠜⠠⠃⡘⠠⠃⠜⡐⠂⠖⠰⡀⢂⠐⡀⢂⠐⠤⡀⢂⠄⢠⠀⠄⠠⠐⠠⢒⠰⡀⠆⠠⢀⠂⠄⠄⡠⢀⢀⠠⢀⡀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠠⠀⠄⠀⠀⠀⠀⠠⠀⠄⠠⠀⡄⢂⠤⡀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⠀⠠⠀
+⠀⠂⢡⠘⢄⠊⡑⠰⢉⠐⠂⠌⡐⢌⠢⠑⡠⠒⠠⠁⠆⡐⠠⠁⢂⠂⡉⠄⠨⠁⠌⠠⠁⠌⡐⢁⠂⠄⡁⠂⠈⢀⠐⡈⢁⠂⠡⠐⠠⠀⠀⠀⠀⢈⠀⠄⢀⠀⠀⠄⠀⠀⠈⠠⠁⠐⠀⢂⠐⠠⠁⢂⠐⠠⠈⠄⠈⠄⠁⠀⡁⢂⠑⡐⢈⠐⡠⢈⠐⡈⠰⡀⠎⡐⢂⠔⡨⠘⠤⣉⠒⡄⢂⡐⠈⠄⠂⡁⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠈⢀⠁⠀⠀⠀⠀⠈⠄⠡⠈⠄⡑⢠⠃⡖⢡⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠄⠁⠀
+⠀⡈⠄⠌⢂⠡⢀⠃⡐⢈⠐⠠⠈⡄⢃⠧⢠⠁⢂⠁⠂⠄⡁⢂⠰⢈⡐⢈⠄⡁⢂⠐⡀⠒⡈⠤⠈⠄⠠⠀⠁⡀⠐⡀⠂⠌⠄⣁⠂⠡⠀⠂⠈⢀⠈⡐⠠⠀⠌⠀⠐⠈⡀⠄⠠⠐⠈⠀⡐⠠⠀⠀⢈⠠⢁⠀⠀⠀⠀⠀⠀⠀⠂⠀⠂⠐⢀⠂⠌⡀⢣⠘⠤⡑⢌⢢⠡⢍⠒⡠⠡⠘⠠⢌⠱⣈⠱⠐⡂⢌⠂⠥⢈⡐⠠⠀⠄⡀⠂⢁⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠂⠁⠂⠐⠠⠑⡈⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⡀⠀⢀⠂
+⠐⠠⢈⠐⡈⡐⠂⠌⡐⠠⠌⠠⠁⠠⢁⠊⡐⠈⠄⡈⠐⡠⠐⡠⢑⠢⢌⢂⠒⡄⠢⡐⠠⡑⡈⠄⠃⠌⠐⡀⠁⠀⠐⠠⢉⡐⠈⠄⡈⠄⠡⠀⢀⠀⠂⠄⠡⢈⠀⠂⠁⡐⢀⢂⠁⣀⠆⠑⡈⠡⢌⡑⢪⡐⢡⢂⡀⠀⠤⣀⠀⠄⠀⠀⠀⠐⠀⠀⠀⠀⠀⠉⠐⠡⠊⠤⡙⢌⠓⡤⢃⠡⣁⠂⢒⠠⠡⢈⠐⠠⠊⠄⠡⡀⢃⠍⡰⠠⢁⠂⡈⠄⡐⠠⢀⠂⡀⠄⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠐⢀⠀
+⠈⡐⢀⠂⡐⠠⠁⠂⠄⠡⠈⠐⠈⠀⠠⠐⢀⠁⠂⠄⡡⠄⠱⣀⠣⡘⢄⠢⡁⢆⠱⡈⢅⠰⢈⠰⠁⠌⡐⠀⠄⠀⠡⡘⡰⢀⠃⡐⠠⠈⠄⠀⡀⠠⠁⠌⠠⠀⠠⠀⡁⠀⢀⣈⠒⠉⢚⡐⠄⡁⠠⠉⠣⠘⠁⠊⠉⠒⠠⢌⠘⡌⢂⠀⠀⠀⡀⠀⠀⠀⠀⠀⠐⠀⠁⠂⠌⠄⢣⠐⣉⠒⠤⣉⠢⣁⢃⢂⠩⡐⠡⢌⡐⠠⠈⠄⡁⢃⠂⠡⠐⡂⠤⢁⠆⡰⠠⠌⣀⠂⠡⠐⡀⠌⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠈
+⠠⠐⡀⠠⠀⡐⠈⡐⠈⠤⢁⠂⠄⡁⠄⠂⠄⣈⠐⡈⠄⡘⢠⢂⠱⡈⠆⠡⠌⡀⢃⠘⡠⢃⡌⢢⢉⡐⠠⠈⢀⠀⠡⢐⠡⢃⡐⠠⠁⠌⠀⡀⢀⠂⠡⠌⠠⠁⣀⣤⡴⠎⠟⣘⣉⣤⣤⣴⣶⣶⣶⣶⣶⣿⣿⣿⣿⣿⣿⣾⣷⣦⣅⣊⠐⠀⠀⠑⠬⡄⠀⠀⡄⠀⠀⠐⠤⡈⠀⠘⠤⣉⠒⡄⢡⢂⡌⢆⡣⣍⡓⢆⡘⠤⢁⢂⠐⠠⠈⠄⠡⢈⠔⠡⠘⣀⠣⡘⢄⠊⡅⠒⡄⢂⠌⡀⠄⢂⠐⠠⠀⠄⡀⡀⠀⠄⠠⠀⠄⠠⠀⠄⡀⠄⢀⠁
+⡥⣃⠔⡠⠐⡀⠐⠠⢁⠂⠄⡈⠐⠠⠐⢈⠐⢠⠘⣀⠒⡀⠆⢌⠢⡑⢌⠡⠒⡀⢂⠐⠀⠣⣜⢣⠳⣌⢧⡘⡤⣈⠔⡀⠣⢄⡐⢠⢁⠂⡁⠀⠀⡈⠐⢀⣴⡶⢟⣩⣴⣾⣿⣿⣿⣿⣻⣿⣿⣿⣿⡿⢿⣯⣭⣝⣛⡛⠻⠿⢿⣿⣿⣿⣿⣿⣶⣤⣄⡑⠂⠀⠸⡁⠀⢀⠀⠡⠀⠐⠠⠀⢣⠈⡄⢂⠘⢄⠳⢌⡱⢊⠐⡄⠃⡄⠊⠄⡁⢂⠁⠢⠌⢂⠅⡠⠒⠠⠌⠒⡈⠡⢐⠈⡐⡐⢈⠂⡉⠆⡉⠦⡑⣌⠱⣈⠱⡈⢌⠡⡘⠠⠐⡈⠠⠀
+⡳⣭⢲⡡⠒⡌⢡⢃⢮⡘⢦⠡⡍⢢⠁⠆⡌⢂⠒⡄⢒⠰⡈⢄⠢⡁⢌⠢⢑⠠⠂⡄⢀⠠⣌⢣⡛⣜⢲⣙⠲⡁⠆⠐⢡⠒⡌⠒⣌⠳⡐⠂⣁⣴⣶⣿⣿⣾⣿⣿⣿⠿⣛⣫⣭⡼⠿⠿⠟⠛⠿⠶⠖⡶⣶⣾⣾⣭⣽⣛⣳⢶⣮⣭⣭⣭⣛⡿⢿⣿⣿⣶⣄⡁⠀⢋⠀⠀⠈⠄⡀⠀⠀⢣⠔⡡⢈⠄⡂⢆⠰⡀⢃⠄⢃⠄⢃⠐⡀⠂⠌⢡⠘⡀⢢⠐⡡⠃⡜⠠⡁⠆⡁⠢⠐⡀⠆⡐⢀⠂⡁⢂⠑⠨⡑⠌⠱⡘⢌⠢⢡⠑⢢⠐⣁⠂
+⣗⣣⢇⡳⢩⡐⠡⢎⢲⡙⣎⠱⡘⠤⣉⠒⡌⣡⠓⣌⠣⢒⡉⠦⡑⣌⠢⣑⢊⡔⢣⠜⣣⢗⣮⣷⣻⣬⢳⣌⠣⠐⠀⠈⠄⠒⡈⠔⠠⠃⠀⡶⢉⣿⡿⢋⣼⣿⡿⠟⣛⣫⣭⣤⡶⠾⠿⢶⡛⠡⣍⠡⣍⡫⣍⠛⢿⠿⣷⣾⣭⣭⣟⠻⢿⣿⡿⢿⣿⣿⣿⣿⣿⣿⣶⣄⠈⠂⠀⠀⠰⣀⠀⠀⠈⠔⡁⠢⠌⡐⢂⠁⠆⡈⠆⡈⠄⠂⠄⡑⠈⠄⠂⠄⠡⠘⡀⠣⠐⡡⠐⠌⢠⠡⢁⠒⠠⠐⡀⢂⠐⠠⢈⠐⡀⠌⠐⡀⢂⠁⢂⠩⢀⠣⢄⠣
+⢗⡞⣼⢱⢃⡌⠱⡈⠦⡑⢮⡱⣉⠖⡤⢓⠬⣐⠣⢆⡹⢠⡙⢢⠱⣄⠳⣌⠲⡘⢤⢋⡖⣏⢾⡱⣟⣼⢳⣬⢣⡑⠤⡁⢎⢡⠒⠈⠀⢀⡝⣰⣿⠏⣱⡿⢏⣥⠖⣿⠛⠛⢉⣁⡤⠍⠩⠄⠀⠁⡄⠳⢠⡗⢈⣿⠾⠁⣿⣯⠹⣿⣿⣯⢿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣧⣄⠀⠀⠀⠀⠆⠀⠀⠀⠐⢁⠂⠰⢀⠊⠤⠑⡠⢡⠘⡀⠒⠠⠉⡄⢡⠈⢄⠡⢀⠁⠂⠄⠁⠌⡀⢂⠐⡈⢁⠂⡐⠄⢊⠐⡀⠂⠄⡈⠄⠐⠀⡈⠄⢂⠐⡀⢊⠐
+⢎⡼⣜⡣⢧⢌⡱⣈⠖⡩⢆⡵⡉⢎⡱⡉⢖⢡⢋⠦⣡⠣⡜⣥⠓⡤⢓⠬⣓⡹⢦⡩⢞⡼⢣⡝⡜⢮⡳⣎⠷⣩⢒⡱⢊⠖⠁⠀⠀⣬⣴⣿⠇⣰⠷⠀⣋⣴⠎⢋⡈⠰⠈⠀⠀⠀⢀⠀⠀⠀⠀⠀⠐⠼⣈⢿⣧⣾⣿⣿⣇⣿⣿⣿⣜⣿⣿⣃⡍⢯⣡⢞⠊⢿⠥⢤⡙⠌⣷⡀⢂⠀⠈⠂⠀⠀⢂⠀⢌⡁⠆⠌⡰⠁⡔⠂⠤⠁⡌⠄⠡⠐⠂⠌⡀⠎⡐⠌⡐⠠⢁⠂⡐⢀⢂⠐⡀⢂⠐⡈⠄⠂⠄⡁⢂⠐⡈⢀⠂⠀⠄⠂⡐⠀⠂⡀
+⢞⡼⣎⡷⣹⢎⡶⣱⢮⡵⣣⠖⣍⢦⡱⣍⣎⠶⣡⢒⡡⢒⡉⢆⠫⡔⡩⢞⣱⣛⢦⡙⠦⡘⣅⢚⡬⢣⠽⣘⠣⠁⠏⠴⠉⠀⠀⢀⠞⣭⢳⠃⠔⢡⣴⣾⠟⣡⣞⣤⣠⠄⣤⠈⠈⡑⠂⠆⡠⢀⠀⠀⢂⠤⠀⣄⡘⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⡏⠻⠄⠻⣮⡑⡄⠐⠂⠞⠣⠘⢿⣆⡀⠀⡁⠈⡄⠈⢆⠀⡎⡔⡡⢄⠃⠤⠑⢂⠡⡐⠌⡠⠡⠌⡐⡐⢢⠁⢎⠰⢁⢂⠒⠠⠌⡀⢂⠐⡀⢂⠐⡈⡐⠠⠀⠄⠂⠐⠀⠠⠈⡀⠂⠄⡁⠂⠄
+⣽⣳⡝⣾⢱⢫⢞⡵⣳⢯⣳⡻⣜⡲⡽⡹⢞⣻⢧⡟⣴⢣⡜⣮⡱⣬⡑⣎⠴⣩⠲⣍⡖⣱⣬⢳⡜⢣⡑⠌⡐⠉⠰⠈⠀⠀⠀⠌⠒⡴⠣⠊⣴⣿⣿⣯⣾⣿⣿⡿⢻⡟⡔⢣⠒⡁⠁⠀⠀⠀⠡⠀⠀⠈⠣⣄⠳⡘⢾⡿⢿⣿⣿⣿⡿⣿⣿⣿⡌⣟⢆⡀⠙⠈⠣⠀⠀⠀⠈⠀⢺⡧⠀⠀⢀⠂⠀⠈⡆⢱⡹⣜⢮⡙⢦⣉⢆⡱⢌⢢⡑⣌⠢⡑⠌⡆⡙⠤⢁⠂⠂⠌⡐⠠⠐⠠⢀⠐⡀⠂⠡⢀⠡⠈⠄⠂⢀⠂⢁⠐⠠⠁⠂⠀⡁⠂
+⠲⢧⢻⡜⢣⠏⡼⢸⡱⢏⠷⣏⡳⢱⢣⡙⢮⡱⢫⡜⣣⠯⣝⡶⣻⢵⣫⢎⡷⣥⢻⣜⣿⣳⢏⡟⠼⣡⢒⡴⣠⢌⡐⠀⠀⠀⠠⠀⠁⠈⠀⢬⣿⣿⣿⣯⡙⣉⡭⡙⠋⠈⠁⠀⡀⢀⠀⠀⠀⠀⠀⠀⠀⠀⢁⠂⠡⢃⢪⠑⠸⢻⣿⡿⢓⣿⣿⣿⠻⠒⣣⠖⠤⠂⠤⢠⠲⡍⢟⣧⡀⢹⡄⢠⡄⠀⡀⠀⢁⠠⡑⢎⠲⣉⠶⡩⢆⡳⢌⡳⡜⢦⠳⣌⠳⡌⠴⣁⠆⡌⢡⠂⠄⢡⠈⠔⡀⢂⠠⠁⡐⠀⡀⠂⠈⠐⡀⠐⠠⢈⠐⠀⠀⡀⢀⠂
+⣹⣟⣶⣝⠪⡜⡱⢧⡹⢌⠳⣌⠱⡃⢆⡹⢄⠳⡡⠎⢥⣛⡼⣳⡝⢮⣓⠻⣞⣷⣻⣾⢯⣿⣎⡜⡑⢢⡙⢾⣟⡏⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⢋⡍⠣⠟⠀⠁⢠⠐⠈⠁⠈⠀⠁⠀⠤⢀⠀⠀⠄⡀⠀⠩⠀⢚⠀⠀⢀⣻⣿⣧⠘⣿⣿⠃⡠⠏⠁⠄⠂⠁⠀⠀⠁⠀⠘⠸⢿⣦⡁⠿⡄⠀⠐⢄⡂⠀⢌⢂⠓⣌⠲⡙⢮⢱⢣⠖⡩⢆⠣⣌⠳⡜⡳⣌⠖⡸⢄⠎⡘⢄⠊⡔⢡⢂⠤⡁⠐⠠⠐⡀⢁⠠⠀⠈⠀⠀⠠⠀⡁⠐⠠⠌
+⠘⢏⠛⡌⠑⡈⡑⠢⢑⢊⡱⢌⡓⡘⢆⠱⢊⡱⠰⡉⠦⡙⠲⡁⢎⡱⢌⠓⡜⡰⢃⠏⡿⢳⢎⠴⡑⢢⢈⡑⢎⠁⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣯⣀⠋⢠⡟⠀⠀⠲⠈⢀⠀⠆⢀⢀⣀⡀⣀⠈⢓⡆⠀⡐⠀⠀⠀⠀⡀⢀⣾⣿⣿⣿⣿⣦⡀⠰⠋⢀⠄⠂⠀⠀⣀⠄⠠⠤⡀⠀⠈⢻⣿⣆⠡⠀⠀⡸⠀⠐⡌⢎⡱⢀⠣⡘⢂⠇⡎⡜⡱⣊⠖⣌⡱⢬⠱⣎⠝⡱⢋⢮⡱⢌⠲⢌⡱⢊⡔⡡⡉⢆⠡⡐⢢⠐⡴⣠⢆⡤⣁⠐⠠⢁⠂⠄
+⠈⠄⠡⢀⠡⠐⡀⢁⠂⠄⠐⠂⡘⠐⡈⠌⡁⠒⠡⠌⠠⠁⠡⠈⠄⡐⢈⠒⠠⠑⡈⠘⠰⡉⢎⠒⣉⠖⢢⠐⠂⠀⠀⠀⠀⠀⠀⠀⠀⣺⡿⣿⣯⠥⠴⠻⠁⠀⢃⣠⣶⣿⣷⣶⣶⣦⣤⣶⢿⣷⡀⠈⠆⡀⠀⠀⠀⠘⣁⣾⠏⢹⣿⣿⣿⣿⣆⠀⢠⠜⠀⢠⠒⡂⠀⠀⠀⠀⠀⠁⢀⠀⠉⣿⡆⠀⠀⠘⠁⠄⠘⠠⠑⠈⠄⡑⠈⠜⠰⡁⠧⡙⢮⡑⢎⢣⡛⡼⣎⠵⣉⠦⡙⢎⡱⢊⠖⣭⠲⣅⠳⣈⠆⡑⢢⠙⡜⠳⡞⣵⢣⣯⡱⢆⡜⡠
+⠀⠈⢀⠂⠄⡁⢀⠂⢀⠀⠂⠐⠀⠁⡀⠄⠀⢁⠠⠀⠐⠀⠁⠠⠀⠄⠠⠀⡁⢀⠀⠁⠂⠐⡈⠐⡀⠊⠄⡈⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⣽⣩⣶⣶⠏⣡⠶⢿⡍⠭⣭⣥⣼⢻⣏⣙⡛⠻⢦⠼⣡⠀⠠⣵⣤⡤⢠⣶⣿⠏⣸⣾⣿⣿⣿⣿⣿⣦⠀⠠⠀⢀⣴⡿⡷⠄⡤⠲⠀⢀⠈⠆⠀⡘⣷⠀⠀⠀⢞⡱⣂⠁⠀⠀⠀⠠⠁⠈⠐⢈⠰⢉⠆⡘⢄⠣⢜⡱⣭⢛⡴⢣⠍⡆⢥⢋⡜⠤⠛⣌⠱⡄⢎⠰⡁⠜⡨⢱⡘⢆⢏⠲⣙⠳⢎⠷
+⠀⠌⡀⠄⠂⠐⠠⢀⠂⠠⠐⠀⠌⢀⠀⡀⢈⠀⠠⠐⠀⡈⠄⠡⢈⠐⡀⠁⠄⡀⠀⠠⠈⡀⠄⢁⠠⠁⠂⠀⠀⠀⠀⠀⠀⠀⠀⢀⢺⣿⣿⣛⣭⣶⣾⡿⣿⣭⣉⠥⣄⡌⣩⢉⡉⡉⠛⠳⢒⠂⠓⠛⢂⠽⢉⣴⣿⣿⠏⣴⣿⡿⠙⣩⣿⣿⣿⣿⣦⡀⣀⣌⣖⠳⢲⣷⣶⣷⣿⣷⣦⣄⡀⣿⣿⡄⠀⠀⢪⠴⡡⠎⡄⡀⢀⠀⠀⠈⠀⠀⠄⢈⠐⠌⡠⠓⣎⠵⣎⢧⠸⡥⢞⡜⢎⡖⠬⡑⠩⢄⠣⢜⡈⠖⡡⢊⠔⣡⠘⡄⢊⠐⠡⠘⡈⠐
+⠀⢂⠐⠠⠁⠌⡐⠠⢀⡁⢂⠡⡈⢄⠢⢐⠠⣈⠐⣀⠂⠄⢂⠁⢂⠂⠤⢁⠢⢀⡁⢂⠡⠐⡈⠄⢂⠡⠌⡀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣵⣤⣦⣤⣡⣡⣀⠠⡈⣠⣤⣶⣾⣿⣿⣿⣟⣾⠏⢀⣴⣿⣿⣿⣿⣿⣿⣿⣷⡈⠖⠈⠄⢩⠹⢭⣿⣿⣿⣿⣟⣛⣽⣿⡇⠀⠀⢣⢣⠑⡘⠤⡑⢢⠐⡠⠀⠀⠀⠀⠀⠈⠐⡁⢣⠘⡜⠰⡊⠵⣈⠧⡘⢢⠘⠄⡁⠃⠌⡐⠂⠌⠠⠁⠌⠂⢅⡚⡔⣣⠜⡤⢃⡴⢡
+⠀⠂⠌⡐⢈⠐⠠⠁⠂⠐⡀⠂⡁⢂⠁⠊⡐⠠⠈⠄⡈⠐⠠⠈⠄⠈⠐⠀⠂⠀⠐⠀⠂⠁⡐⠈⢀⠂⡐⠁⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣿⣿⣿⣿⣿⣿⠿⠋⣠⠋⡜⠳⠾⠿⠿⣬⠉⢿⢷⡉⣦⣄⣀⣀⢡⣤⣴⣶⣬⣩⣭⣿⣾⣿⣏⠀⢀⢣⠂⡍⠰⢡⠘⣄⠫⢔⡱⢂⠄⡀⠀⠀⠀⠀⠀⠱⢈⠱⢈⠆⠡⢂⠑⢂⠩⠄⡑⡈⡐⠠⠈⠄⡁⠂⡄⣁⠢⠐⡱⢨⠙⡜⠱⣊⠳
+⢈⡐⠠⢀⠂⢈⠀⠄⠁⠀⠀⠐⠀⠠⢈⠀⡀⠀⠀⠂⢀⠡⠀⠀⠐⡈⠀⠀⠀⠀⡀⠐⡀⠄⡀⠐⡀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⣥⠖⠛⠁⠒⡈⠁⠌⢉⠱⠀⠂⢀⠪⠁⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀⢆⠩⡐⢉⠢⡑⢢⢍⢲⡐⢣⠘⠤⣁⢂⠀⠀⠀⠄⠀⠀⠂⠌⠡⠀⠌⠀⡐⢈⠐⡐⠠⡑⢌⠰⢀⠡⡐⢄⠢⡑⢄⠣⡐⢌⠱⣀⠣
+⠢⡜⣐⠂⡌⢀⠂⠠⢀⠂⢁⠐⢈⠐⠢⠡⠐⡀⠀⠀⠀⠀⠀⢀⠂⢁⠁⢂⠀⠀⡐⠤⠐⢂⠑⠂⢀⡀⢀⠀⢀⠤⣄⠀⠀⡌⢰⢋⡞⣿⣻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠰⢋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⢂⠐⠠⠑⡌⢃⠎⡱⢌⠣⣉⠒⠤⢊⠜⠰⢠⢀⠀⠂⠀⠀⠁⠈⠀⢀⠀⢀⠂⠄⠡⠐⡈⠰⡈⠔⡡⢊⠴⡑⡊⡔⡉⠦⡑⠤⢃
+⢱⡘⠴⣩⢒⠤⢊⠔⡂⢜⡠⢊⠄⠂⡁⠄⠡⢀⠡⠀⠂⠄⠁⡀⠄⢠⠈⡔⡈⠔⡐⠢⡁⢂⠈⡜⣱⠎⡱⠀⠁⠀⠈⡇⠀⠀⣎⢼⣹⢳⣝⡻⣞⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢡⠃⡰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⡈⠠⢁⠘⠠⢊⠐⡀⠒⡠⢉⠆⡡⢊⠱⢌⠪⢜⡠⢄⠀⠀⠀⠀⠀⠀⠀⠈⠄⢃⡐⢁⠂⡱⢘⡰⣉⠶⡱⠱⢤⡙⢦⡹⢌⡣
+⡅⢎⡱⣡⠫⣜⠡⢎⡘⢄⠢⠡⢌⠒⡰⢈⠒⡄⢂⡁⠂⠌⡐⢠⠘⡄⢣⠐⣌⠰⣀⢣⡔⣦⠃⢈⠀⠤⡁⠀⠀⠀⡄⢸⠀⢨⢟⡎⣯⢗⢮⠳⣍⠟⣧⢟⡿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠟⡛⠛⠛⣁⡴⠾⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⠹⠋⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠀⠄⡁⠠⢈⠐⡀⠠⠀⠁⠄⡁⢊⠰⣁⠫⣌⢓⠢⡑⠬⡘⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠐⠠⢁⠂⠡⢃⠍⡓⢦⡹⢦⡙⠦⡱
+⡝⢮⡑⢆⠳⢌⢃⠒⡌⠢⣁⠣⠌⢢⠑⠌⡒⠌⢢⠐⡉⢆⡑⢢⡑⢌⠢⡑⠌⡱⢈⠆⣹⢂⡔⣠⠙⣦⠃⠀⠀⣸⣠⡄⠂⢈⡮⣝⣎⠿⣌⡓⢌⠫⡜⢪⡝⣹⢯⣿⣿⠟⣫⠽⠏⠉⠐⢀⣤⣶⣿⡟⢻⡇⢀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠉⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⠀⢀⠂⠄⡁⠂⠄⠀⠄⢀⠈⢀⠠⠀⡐⢄⠫⡜⡌⡓⢌⠢⠑⡈⠄⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢈⠐⠠⠊⡅⢣⠙⢢⠙⣢⠱
+⡜⣡⠚⡌⡘⢄⠊⡔⢠⠡⡐⢌⠢⠡⢌⠒⡤⣉⠆⠥⡉⠆⡜⢡⡘⢬⠱⢌⠒⡄⢢⠘⢲⢫⢒⠡⢛⠰⠀⠃⢀⡏⣿⡷⠀⠈⢶⢩⡎⣟⠶⣩⠌⡑⢌⠣⡜⢥⡛⡜⢮⡙⠂⠀⠀⠠⡴⡿⢻⡿⠟⠁⠋⠁⠁⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠤⡀⠀⠈⢿⣿⣿⣿⣿⣟⡳⠀⠀⠈⠐⠠⠁⠌⡀⢂⠠⠀⠂⢀⠐⡀⠎⠰⠐⡈⠱⠈⠄⠁⢀⠀⠂⠀⡀⠁⠐⡀⢀⠀⠀⠀⠀⠀⠀⠡⠁⠒⡈⠤⢁⠂⠡⢀⠃
+⡰⣁⠞⡤⢩⠜⡒⢌⢆⡱⢌⠦⣉⠳⣌⢓⢲⡱⢮⡱⣘⠰⣌⠢⢜⢢⡙⢬⠱⡘⢤⢋⠴⣈⠦⡱⣈⠤⠀⠃⢸⠅⣹⠁⠀⠀⢊⢶⡹⠎⣳⠄⠑⢦⠨⠑⡌⠰⣍⢎⠑⠀⠀⠀⢠⠎⠓⠁⠉⠀⠘⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣟⡶⡏⠀⠀⠀⠀⠁⠈⠐⡀⠂⠄⠐⠀⠠⠀⠐⠈⠄⠡⢀⠁⠌⠀⠈⠀⠀⠀⠀⠀⠀⠂⠀⠄⠂⡐⢀⠀⠀⠀⠀⠀⠀⠐⠐⠂⠌⠐⡀⠂
+⠴⣈⠚⡤⢃⡚⣬⡘⢆⡜⣪⢱⡉⠖⡨⠌⢢⢙⠳⢲⠩⠳⢌⡑⢊⠦⣙⢆⢣⡍⠶⣩⠖⣭⢲⡱⢦⡹⡁⢸⣞⠀⢹⠀⠀⠀⢍⠶⠁⣘⡁⠆⡛⠌⠀⡹⢀⡳⠌⠂⠀⠀⡀⠔⠁⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠘⢿⣟⣾⣳⠅⠀⠀⠀⠀⠀⠀⠀⠀⡁⠂⠄⠂⠁⠠⠈⠐⡀⠂⡀⠠⠀⠠⠁⠀⠄⠂⠀⠀⠀⠀⠁⡀⢂⠐⠠⠊⡔⢠⠀⠀⠀⠀⠀⠀⠀⠂⠄⡁
+⠦⣁⠏⠴⡩⢞⡱⡽⢮⣝⣧⠧⡘⠠⠐⡈⠄⡈⢡⠂⡁⢁⠂⡜⡈⠖⣩⢾⣿⡞⢧⢃⠞⠴⢣⡝⢦⠳⢥⠈⣏⣤⡈⠀⠀⠀⠈⡀⢸⠀⠁⢠⢃⠀⡰⢹⠐⣣⠁⠀⠠⠆⠁⠀⠈⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠆⠌⠄⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣞⣷⣏⠀⠠⢁⠂⡀⢀⠀⠀⠀⠀⠁⠐⠠⠁⠂⡁⢂⠐⠠⠐⠀⠄⠁⠠⠁⠀⡀⠄⠂⠀⠀⠀⠀⠀⠌⡐⠡⠌⢂⠌⣁⠂⠄⡀⠀⠀⠀⠂⠀
+⢆⡱⡈⢇⠜⣠⠱⣌⣳⢎⠶⡡⠃⢁⠆⡐⢠⠘⣦⢳⡐⢂⠐⠠⠑⡈⠔⢫⠱⣌⢣⣞⡿⣖⡄⠚⢌⠳⣘⠈⢏⠁⠀⠀⠀⠀⢀⠀⠀⠀⡄⠈⠈⠠⢁⠇⡸⠀⠀⡔⠁⠄⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠠⠁⠂⠄⡀⠂⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⡦⠀⢡⠂⡔⢀⠂⡐⢀⠀⠀⠀⠀⠁⠠⢁⠐⠠⢈⠐⠠⠁⠌⠠⠁⡀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠡⠘⡀⢂⠄⠨⠐⡠⢁⠆⢠⠀⠀
+⢢⠱⡘⣌⠲⡡⠞⠽⠟⠏⠂⢠⠰⢌⠰⣀⠃⡜⢠⠃⡔⡈⠔⡡⠒⣌⠰⢂⠧⡘⠧⣚⠱⡰⢌⠣⣌⠳⣌⠐⣄⣁⡠⠀⠀⠀⢨⡀⠐⠈⠠⢂⠁⡔⠃⠖⠁⠀⠜⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠀⢀⠀⠰⠀⠀⠀⠀⠀⠀⠀⠡⠄⠀⢢⠑⡌⢂⡒⢄⠂⠄⡀⠀⠀⠀⠀⠀⠌⠐⠠⠈⠄⠡⠈⠄⡁⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢁⠂⠌⠠⠑⡠⠃⡜⢠⠃⢆
+⢂⠧⡱⢈⠖⡡⢃⠤⡠⢔⢪⡑⢎⡜⢢⡑⢎⠴⣡⢚⢤⡑⢎⡔⣩⠔⣣⢍⢢⡑⢎⡔⢣⡑⢎⡱⢌⠳⡨⢄⠉⠏⠁⠀⠀⠀⠄⠀⠀⠂⠀⢈⠤⡐⢂⡀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠐⡂⠀⠢⢍⠰⠡⠘⢂⠁⠂⠄⢂⠡⠀⠀⠀⠀⠀⠁⠈⠄⠡⠈⠄⡐⠀⠄⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠈⠠⠁⢂⠁⠒⡈⠤⡉⠄
+⠌⡆⠱⡈⢆⢡⠋⡖⢭⠎⡦⣙⠦⡘⢥⠚⣬⢚⡴⣋⠶⣩⠖⡼⣡⢟⡦⢏⠶⣩⢖⡬⠣⢜⠢⢜⢢⢃⠷⡘⢆⡀⠀⠀⠀⠀⢂⠐⠀⠀⠰⢉⠂⢔⠣⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠡⠀⠐⡈⠄⢂⠁⡎⡔⣩⠐⡄⠂⢁⠐⠀⠀⠀⠀⠈⠠⠑⡈⡐⠠⢈⠀⡐⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⢀⠠⠈⠄⡁⠒⡈⠔
+⠳⣌⠣⣕⢊⠦⣙⢸⡘⣾⣱⣎⢮⠱⣊⠵⣊⠷⡸⢥⡛⡴⣋⠶⣙⠮⡜⣭⢚⡵⡚⡼⡑⣎⡱⢎⠶⣩⢞⣙⢮⡱⠀⠀⠀⠀⠈⠂⠀⣘⠀⠉⠐⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⣀⢀⡀⢀⡀⣀⢄⡠⣀⢄⡠⢀⣀⣀⢀⡀⢀⠀⠀⠀⠀⠀⠀⢂⠀⠀⠀⠀⠀⠀⠄⠀⠐⡈⢆⡱⢘⠲⣅⠳⢠⠁⢂⠈⡐⠀⠀⠀⠀⠀⠀⠐⠠⢁⠂⡐⠀⡐⠈⠀⠐⠀⠀⡐⠀⠁⢀⠀⠀⠄⠀⡀⠀⢂⠐⡈⠐⡐⢈
+⠱⣊⠳⣌⠳⣘⠴⣣⢟⡳⢏⡞⢆⠧⡑⢮⠥⢫⣑⢣⡙⢴⢩⢚⠥⣋⠶⣘⠲⣌⠳⣅⠫⣔⢣⢏⡞⡱⢎⡎⢇⠣⠄⠀⠀⠀⠀⠀⠡⡈⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡁⢂⠄⡄⠢⠐⢦⡑⢊⠇⠓⡌⢧⠹⣃⡙⠣⣌⣁⢛⡎⡷⢫⡾⣽⢯⣿⢯⡟⣞⢦⣤⢲⠠⠁⠆⠀⠀⠀⠀⠀⠀⠀⠀⠈⢆⠢⢉⠒⠄⢃⠂⠡⢂⠐⠠⠐⠀⠀⠀⠀⠀⠀⠀⠀⠂⠄⡁⠀⠀⠈⠀⠄⠁⢀⠠⠈⠀⡀⠂⢀⠂⢀⠡⠀⠄⢀⠁⡐⠠
+⠱⡌⠳⣌⠳⣌⢏⢧⢫⠜⣱⠚⡼⣘⠭⡲⢍⡳⢌⢦⡙⢆⠣⢎⠲⣡⠒⡥⣓⢬⢳⣬⢓⣎⠳⢎⡜⡡⢇⡜⡈⠡⠀⠀⠀⠀⠀⠀⠀⢰⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠡⠐⣂⠢⡌⣅⢚⡰⢌⣣⠀⣞⠡⣏⠞⡄⠉⢇⠀⠢⠈⡜⢡⠋⡁⠋⠎⡘⠫⣝⠫⣾⣱⢫⣜⠂⠈⠀⠀⠀⠀⠀⠀⠀⢁⠊⠄⡑⠠⠀⠌⠠⢈⠐⡀⠌⠀⠄⡀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠐⠀⠁⠀⠄⠀⠠⠐⠀⡀⠐⠠⠐⡀⠄⠂⠀⠂⠀⡀⠄
+⡱⢌⠳⣌⠳⡜⢎⠮⡱⢎⡕⣋⠶⡩⢖⡙⣎⡱⢎⠦⡙⣌⠳⣎⢳⢆⡻⡴⣋⣞⢣⢎⡳⢌⡙⠦⢌⡑⠢⠐⠀⠁⠀⠀⠀⠀⠀⠀⠀⣈⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⢨⠑⣢⠓⡸⠄⢃⠜⠂⠀⡘⠈⡀⠌⠒⠀⠁⠈⠐⠀⡀⠌⠀⡐⠈⠀⠀⠁⠄⠸⠐⡤⣉⠳⣎⢳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠌⡐⠠⢁⠊⠤⢁⢂⡐⠠⢀⠁⠂⠄⠀⡈⠀⠄⢀⠀⠄⡠⠀⠀⠀⠂⠈⡀⠈⠀⠌⠀⠄⠂⠀⠌⡐⠠⠀⠄⠂⠁⠠⠐⠀⡀
+⠴⣉⠶⣡⢛⢬⢣⠣⣕⠪⡜⣘⠖⣩⠚⣔⢣⠞⣬⢳⡹⣞⡽⣎⡟⢮⡳⣍⠳⣌⠣⢎⡐⢣⠘⡐⠂⠌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⡡⠚⠤⢡⠁⡀⠎⠀⠀⠀⠀⠀⠀⠄⠀⠌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⡴⢐⡳⢬⡜⣱⣃⠀⠀⠀⠀⠀⠀⠀⠈⣆⠡⢂⠅⡊⠔⡡⢂⠄⢣⠐⡨⠐⡈⠀⠄⡐⠈⡀⠌⡐⣁⠊⡄⠀⡄⢂⠄⢁⠐⠀⠂⠠⠈⡐⠠⠐⡀⠡⠀⢀⠂⠁⡀⠂⠄
+⣒⢡⢚⡤⣋⢦⢣⠓⣌⠳⣌⠱⡊⠔⣭⢊⢦⡙⣦⢏⡷⡹⢞⡬⣙⢆⠳⡌⡓⢌⠒⠤⡘⠄⠃⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⢠⠁⠊⠔⠂⡀⠆⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⣔⠫⣁⠳⡜⣠⠇⠂⠀⠀⠀⠀⠀⢀⡼⡧⢏⡖⢬⠐⡡⢂⠅⡊⢄⠣⢐⠡⢂⠍⡐⣀⢂⠐⣀⠣⣟⡿⣜⠡⠘⠂⠌⡀⠠⠐⠈⢀⠡⢀⠁⢂⠐⠀⠐⠀⢀⠐⢀⠁⠂
+⡜⢢⣏⠶⡝⡎⠥⠋⠴⢣⠜⠀⣠⠚⣤⢋⢦⡙⢦⣋⠶⡙⣌⠒⡥⢊⠵⣈⠱⣈⠜⠢⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠀⠀⠂⠐⠀⠀⡀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⢈⠤⣀⠓⢌⠐⡀⠀⠀⠀⠀⠀⠀⠀⢍⡻⣝⠾⣥⣏⠴⡁⢎⡘⢄⠣⠌⡐⡈⠤⢑⠠⢊⡔⢀⠂⠌⡙⠌⠂⢁⠈⢀⠠⢀⠀⡐⠀⠂⠌⡐⠠⠀⢈⠀⠄⠂⡀⠂⠌⡐
+⡜⢣⢎⣽⣸⣵⣩⣽⡟⠁⢀⠢⣥⢛⡤⣋⠶⡙⡆⡇⢧⠱⡌⢚⠰⣉⠒⡌⠱⡐⠌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠄⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠂⢁⠀⠂⠀⠈⠀⠀⠀⠀⠀⠀⠀⣀⠑⠎⠿⣼⢯⡗⣍⠢⠜⡠⢃⡜⢠⠑⢢⠡⢎⡥⡘⢤⡈⠔⡠⠈⠐⠠⢀⠠⢀⠂⠴⡐⢄⠈⠀⠄⠐⡀⠠⠀⠄⠂⠄⡁⠂⠄
+⣜⣻⡾⣯⣟⣾⡟⠁⠀⢠⣌⠳⣜⢣⢎⡱⢊⠵⡘⠜⣂⠓⡌⢡⠒⠄⠣⢌⠑⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡐⠂⠡⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⣶⣤⣉⠳⡝⢦⡙⢬⡑⢦⠘⡤⢉⠦⡙⢎⠖⡩⢆⠸⡱⢧⡏⡔⣁⠂⡐⠠⢈⠐⡉⠄⡈⠀⠠⠀⢀⠐⠀⡈⠐⠠⠀⡁⠂
+⣼⠟⠼⡱⠿⠓⠀⠀⠌⠃⠈⠓⠈⠒⠨⠐⠉⠢⠉⠂⠅⠊⠄⠡⠈⠌⠁⠂⠀⠡⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠢⠐⠀⢈⠙⠳⠤⠁⡘⠦⠳⠌⠳⠌⠣⢆⠹⠌⠌⠱⠨⠑⠌⠢⠄⠔⠢⠓⠌⠱⠈⠖⠠⠂⠄⠀⠐⠈⠄⠀⠂⠀⠐⠀⠀⠀⠄
+    </pre>
+</div>
+
+    <!-- ------------------------------------------------------------------------ FOOTER -------------------------------------------------------------------------------- -->
+    <footer class="footer">
+        BLENDER · 3D
+    </footer>
+
+    <audio id="bgmusic" loop>
+    <source src="../recursos/SpaceDementia.MP3" type="audio/mpeg">
+</audio>
+
+<button class="mute-btn" id="mute-btn">&#9834; SONIDO</button>
+
+<script>
+    var audio   = document.getElementById('bgmusic');
+    var btn     = document.getElementById('mute-btn');
+    var playing = false;
+
+    function intentarPlay() {
+        if (!playing) {
+            audio.volume = 0.4;
+            audio.play().then(function() { playing = true; }).catch(function() {});
+        }
+    }
+
+    document.addEventListener('click',   intentarPlay, { once: true });
+    document.addEventListener('keydown', intentarPlay, { once: true });
+
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        intentarPlay();
+        if (audio.muted) {
+            audio.muted = false;
+            btn.innerHTML = '&#9834; SONIDO';
+            btn.classList.remove('muted');
+        } else {
+            audio.muted = true;
+            btn.innerHTML = '&#9834; MUTE';
+            btn.classList.add('muted');
+        }
+    });
+</script>
+
+</body>
+</html>

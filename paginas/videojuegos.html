@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videojuegos</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .nav-top {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--borde);
+        }
+        .nav-top a {
+            font-family: var(--fuente-titulo);
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            color: var(--texto-dim);
+            text-decoration: none;
+            padding: 0.85rem 1.25rem;
+            border-right: 1px solid var(--borde);
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-top a:hover {
+            background: var(--acento-pale);
+            color: var(--acento);
+        }
+        .nav-top a.activo {
+            color: var(--acento);
+            border-bottom: 2px solid var(--acento);
+            margin-bottom: -1px;
+        }
+
+        /* Etiqueta de motor */
+        .motor-tag {
+            font-family: var(--fuente-titulo);
+            font-size: 0.58rem;
+            letter-spacing: 0.18em;
+            color: var(--acento-dim);
+            border: 1px solid var(--acento-dim);
+            padding: 0.2rem 0.55rem;
+            flex-shrink: 0;
+            align-self: center;
+        }
+
+        /* Sección de proyectos futuros */
+        .futuro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--borde-dim);
+            border: 1px solid var(--borde-dim);
+            margin-top: 2rem;
+        }
+
+        .futuro-item {
+            background: var(--bg-card);
+            padding: 1.25rem 1.1rem;
+            transition: background 0.2s;
+        }
+
+        .futuro-item:hover {
+            background: var(--acento-pale);
+        }
+
+        .futuro-item h3 {
+            font-family: var(--fuente-titulo);
+            font-size: 0.9rem;
+            color: #c4aee0;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .futuro-item p {
+            font-size: 0.85rem;
+            color: var(--texto-dim);
+            line-height: 1.6;
+        }
+
+        .futuro-tag {
+            display: inline-block;
+            font-family: var(--fuente-titulo);
+            font-size: 0.52rem;
+            letter-spacing: 0.15em;
+            color: var(--acento-dim);
+            border: 1px solid var(--borde);
+            padding: 0.15rem 0.45rem;
+            margin-bottom: 0.6rem;
+        }
+
+        @media (max-width: 700px) {
+            .futuro-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ascii-box {
+            border-top: 1px solid var(--borde-dim);
+            padding: 3rem 0 1rem;
+            margin-top: 0rem;
+            overflow-x: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ascii {
+            font-family: monospace;
+            font-size: 0.7rem;
+            line-height: 1.3;
+            color: var(--acento-dim);
+            white-space: pre;
+        }
+
+        .mute-btn {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            z-index: 100;
+            background: var(--bg-card);
+            border: 1px solid var(--borde);
+            color: var(--acento);
+            font-family: var(--fuente-titulo);
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            padding: 0.45rem 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .mute-btn:hover { background: var(--acento-pale); color: var(--texto); }
+        .mute-btn.muted { color: var(--texto-dim); border-color: var(--borde-dim); }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-top">
+        <a href="../index.html">&#8592; INICIO</a>
+        <a href="3D.html">3D</a>
+        <a href="videojuegos.html" class="activo">VIDEOJUEGOS</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-titulo-bloque">
+            <h1>Proyectos<em>VIDEOJUEGOS</em></h1>
+            <p class="hero-desc">A lo largo de mi carrera he trabajado en pequeños juegos tanto para Unity como Unreal Engine. Aquí hablo sobre algunos de ellos y lo que se viene.</p>
+        </div>
+    </header>
+
+    <main class="contenido">
+
+        <!-- ---------- TRY DE GLORIA Y MUERTE ---------- -->
+        <article class="proyecto">
+            <div class="proyecto-header">
+                <span class="proyecto-num">01</span>
+                <h2>Try de gloria y muerte</h2>
+                <span class="motor-tag">UNREAL ENGINE</span>
+            </div>
+
+            <p>Proyecto para la materia de guion transmedia, basado en el universo transmedia de mi compañera de equipo. El juego pone al jugador en el rol de un detective investigando un asesinato cometido en un estadio de rugby, la asesina es la protagonista del universo, impulsada por una segunda personalidad que despierta cuando algo lastima a la personalidad principal la cual no sabe que tiene una segunda personalidad.</p>
+
+            <div class="imagen-wrapper">
+                <img src="../images/capturas/tryGloria1.png" alt="Try de gloria y muerte cafetería">
+                <div class="imagen-caption">Cafeteria inicial donde estan las primeras pistas</div>
+            </div>
+
+            <div class="bloque-tecnico">
+                <div class="texto">
+                    <p>El personaje fue creado con un Metahuman, usando un proceso para convertirlo en malla jugable (los Metahumans están pensados para animación, no para juegos en tiempo real). Y le  asigne el paquete de animaciones femenino del robot predeterminado de Unreal Engine, ya que el masculino era demasiado musculoso y deformaba el modelo de formas raras.</p>
+                    <p>Las pistas del estadio se distribuyeron a lo largo de un camino de luces para guiar al jugador sin que tuviera que deambular, esto porque el juego debia de presentarse rapido en clase junto a todos los demas trabajos (aun asi no se pudo terminar completo :<)</p>
+                </div>
+                <div class="imagen-wrapper" style="margin:0;">
+                    <img src="../images/capturas/tryGloriaInventario.png" alt="Inventario estilo Resident Evil">
+                    <div class="imagen-caption">Inventario inspirado en Resident Evil</div>
+                </div>
+            </div>
+
+            <p class="nodos-titulo">SISTEMA DE INVENTARIO</p>
+            <ul class="lista">
+                <li><strong>Administración de objetos</strong> | combinar, inspeccionar, soltar ítems</li>
+                <li><strong>Lectura de documentos</strong> | notas y pistas encontradas en la escena</li>
+                <li><strong>Inspección 3D</strong> | modelo giratorio del objeto con descripción dicha por el detective</li>
+            </ul>
+            <p>El sistemade inventario fue hecho a partir de una plantilla de fab, pero como no tenia documentacion tuve que estar varios dias estudiando los blueprints para entender como crear cosas a partir de el y customizarlo.</p>
+
+            <div class="imagen-wrapper">
+                <img src="../images/capturas/tryGloria3.png" alt="Escena del crimen">
+                <div class="imagen-caption">Habitación final del crimen junto el trofeo de la asesina</div>
+            </div>
+
+            <div class="bloque-tecnico">
+                <div class="texto">
+                    <p>La parte más demorada del desarrollo fue la creación de colliders. El estadio provenía de la librería fab con colliders automaticos, que tenia una cantidad ridicula de poligonos, lo que hacía el juego injugable incluso en mi pc gamer, y esto tenia que poder correr en un portatil gama baja para la presentacion.</p>
+                    <p>Lo que hice fue abrir la carpeta de "meshes" y abrir manualmente cada objeto dentro de todo el mapa y crearle un collider personalizado a partir de formas basicas, excepto por las partes no interactuables como el techo alto del estadio, posters/señales en paredes, etc.</p>
+                </div>
+                <div class="imagen-wrapper" style="margin:0;">
+                    <img src="../images/capturas/tryGloriaEditor1.png" alt="Vista del editor, colliders">
+                    <div class="imagen-caption">Colliders en el pasillo</div>
+                </div>
+            </div>
+
+            <div class="imagen-wrapper">
+                <img src="../images/capturas/tryGloriaEditor2.png" alt="Vista del editor, segunda toma">
+                <div class="imagen-caption">Colliders manuales en el estadio (esta es una version vieja del proyecto por lo que no estan todos)</div>
+            </div>
+
+            <div class="imagen-wrapper">
+                <img src="../images/capturas/tryGloriaAnimaciones.png" alt="Protagonista con animaciones del robot">
+                <div class="imagen-caption">El Metahuman con las animaciones del robot masculino (se parece al jorobado de Notre Dame 😭)</div>
+            </div>
+        </article>
+
+        <!-- ---------- DIALECTICANDO ---------- -->
+        <article class="proyecto">
+            <div class="proyecto-header">
+                <span class="proyecto-num">02</span>
+                <h2>Dialecticando</h2>
+                <span class="motor-tag">UNREAL ENGINE</span>
+            </div>
+
+            <p>Juego desarrollado para una materia de comunicación donde debíamos presentar un tema de forma creativa. Propuse hacer yo solo el desarrollo del juego mientras el equipo se encargaba del cómic (ni pa eso sirvieron lol). Lo hice como un plataformero 3D en una isla flotante donde el jugador busca páginas de un cómic sobre retórica y argumentación (esa era la clase que estabamos viendo).</p>
+
+            <div class="imagen-wrapper">
+                <img src="../images/capturas/dialectiando1.png" alt="Dialecticando cómic">
+                <div class="imagen-caption">Página 1</div>
+            </div>
+
+            <div class="bloque-tecnico">
+                <div class="texto">
+                    <p>La isla flotante estaba dividida en diferentes zonas con diferentes objetos en el aire para hacer un parkour. Señalé los puntos de interés mediante sistemas de partículas y pequeños maniquíes que indicaban el numero de página, tambien use ascensores (los círculos rojos en el editor) para para llegar a algunas zonas altas del mapa.</p>
+                    <p>El final del juego es en la plaza central, donde hay que entrar en un kraken que tiene la página final en sus "alcantarillas internas". Lo más interesante del kraken fue su sistema de colisiones en tiempo real sincronizadas con la animación de los tentáculos.</p>
+                </div>
+                <div class="imagen-wrapper" style="margin:0;">
+                    <img src="../images/capturas/dialectiando2.png" alt="Isla flotante de Dialecticando">
+                    <div class="imagen-caption">Vista aérea</div>
+                </div>
+            </div>
+
+            <div class="imagen-wrapper">
+                <img src="../images/capturas/dialectEditor1.png" alt="Vista del editor">
+                <div class="imagen-caption">Mapa desde el editor</div>
+            </div>
+
+            <div class="imagen-wrapper">
+                <img src="../images/capturas/dialectEditor2.png" alt="Vista del editor">
+                <div class="imagen-caption">Kraken en la plaza</div>
+            </div>
+        </article>
+
+        <!-- ---------- CRÓNICAS DE LA SALCHIPAPA ---------- -->
+        <article class="proyecto">
+            <div class="proyecto-header">
+                <span class="proyecto-num">03</span>
+                <h2>Crónicas de la salchipapa</h2>
+                <span class="motor-tag">UNITY</span>
+            </div>
+
+            <p>El primer juego que hice en la universidad y seguramente el mas divertido. La historia va de que eres una papa y tu novia es una salchicha, y los 2 quieren cometer un suicidio de pareja como maxima expresion de amor para poder convertire en salchipapa, pero antes de poder hacerlo, llega un pan perro y secuestra tu salchicha para poder volverse un perro completo, entonces tu objetivo es ir y enfrentarte a diferentes comidas y elementos de cocina para poder encontrar al pan perro, derrotarlo, recuperar a tu salchicha y volverte salchipapa.</p>
+
+            <div class="imagen-wrapper">
+                <img src="../images/capturas/salchipapa1.png" alt="Lavaplatos con alita">
+                <div class="imagen-caption">Zona inicial: lava-platos con las alitas como tutorial</div>
+            </div>
+
+            <div class="bloque-tecnico">
+                <div class="texto">
+                    <p>El sistema de combate es por turnos tipo Pokémon, con diferentes acciones disponibles para el jugador (aunque no se pudieron implementar todas bien).</p>
+                    <p>Cada parte del juego tiene una banda sonora son clasicazos como Asereje, Diomedes Díaz, y otros pero en versión 8-bits.</p>
+                    <p>En cada presentación en clase comprabamos salchipapas gigantes para darle al salon, y el profesor hasta llego a sacar el celular para grabar de lo surrealista que era todo.</p>
+                </div>
+                <div class="imagen-wrapper" style="margin:0;">
+                    <img src="../images/capturas/salchipapa2.png" alt="Sistema de combate por turnos">
+                    <div class="imagen-caption">Sistema de combate por turnos</div>
+                </div>
+            </div>
+
+            <div class="imagen-wrapper">
+                <img src="../images/capturas/salchipapa3.png" alt="Portal salchipapo">
+                <div class="imagen-caption">Portal de en el desagüer</div>
+            </div>
+
+            <div class="bloque-tecnico">
+                <div class="texto">
+                    <p>El comedor era la zona intermedia con grupos de chorizos que se debian enfrentar si o si antes de llegar al pan perro.</p>
+                </div>
+                <div class="imagen-wrapper" style="margin:0;">
+                    <img src="../images/capturas/salchipapa4.png" alt="Comedor con los chorizos">
+                    <div class="imagen-caption">Comedor con los chorizos</div>
+                </div>
+            </div>
+
+            <div class="imagen-wrapper">
+                <img src="../images/capturas/salchipapa5.png" alt="Combate con jefe pan perro">
+                <div class="imagen-caption">Combate final contra el pan perro</div>
+            </div>
+        </article>
+
+        <!-- ---------- PROYECTOS FUTUROS ---------- -->
+        <article class="proyecto">
+            <div class="proyecto-header">
+                <span class="proyecto-num">+</span>
+                <h2>En desarrollo / planeados</h2>
+            </div>
+
+            <p>Proyectos que estoy trabajando actualmente o planeando para el futuro. La mayoría tienen títulos temporales y ninguno tiene visuales por ahora.</p>
+
+            <div class="futuro-grid">
+
+                <div class="futuro-item">
+                    <span class="futuro-tag">EN DESARROLLO · TERROR COSMICO EN EL ARTE</span>
+                    <h3>Nuclear Ripoff</h3>
+                    <p>Este es el que me tiene mas emocionado de momento dado que lo estoy haciendo completamente personal, no es para ningun trabajo ni nada, es un roguelike bullet hell 2D inspirado en juegos como Nuclear Throne o Enter the Gungeon, pero este explora como tema el terror cosmico a traves de la historia, empezando en la epoca primitiva con el arte rupestre y avanzando a epocas a traves de los niveles, donde cada nivel va a estar ambientando en escenario/enemigos/jefes, etc. Segun su respectiva epoca/vanguardia artistica.<br><br>
+                    Cabe aclarar que el nombre no esta planeado aun</p>
+                </div>
+
+                <div class="futuro-item">
+                    <span class="futuro-tag">PLANEADO · TERROR</span>
+                    <h3>Sonne of Nothing</h3>
+                    <p>>Este es el primer juego de terror terror que quiero desarrollar, enfocado en el monstruo principal, el cual no ataca directamente al jugador si no que analiza sus patrones de comportamiento a lo largo de las partidas y prepara trampas, emboscadas y demas para cumplir su propio objetivo a costa del jugador, aqui el jugador esta en un bosque/zona aislada de la sociedad (no decidido aun) y es traido aqui sin ningun tipo de informacion o tutorial, el solo tiene que explorar, encontrar estructuras/objetos y deducir para que sirve todo, al morir el nivel no se reinicia, simplemente se deja su cuerpo con todo lo que tuviera en el piso y es renacido como un nuevo humano aleatorio con caracteristicas unicas (altura/fuerza/enfermedades) lo que define que puede o no hacer, le pueden pasar o como puede interactuar con ciertas cosas en el mundo, el tiene que encontrar su anterior cadaver antes que el monstruo el cual tambien le puede robar sus objetos para usarlos a su favor de distintas maneras, el juego lo tengo planeado para desarrollar cuando tenga mas experiencia como desarrollador y especialmente con cosas como crear IAs avanzadas.</p>
+                </div>
+
+                <div class="futuro-item">
+                    <span class="futuro-tag">PLANEADO · SHADERS</span>
+                    <h3>Robot in the Apocalipse</h3>
+                    <p>Ese jamas sera el titulo oficial. Es mas bien un proyecto algo pequeño que tengo planeado como una practica para crear shaders y sistemas de movimiento/combate complejos, lo tengo imaginado como un robot en un mundo post-apocaliptico donde solo quedan robots en el mundo, y por X o Y motivo nosotros debemos ir por ahi asesinado robots y tomando sus partes, especialmente sus ojos, aqui viene la parte de los shaders, pues como estoy interesado en la parte del post-procesado mas que en los materiales, quiero que cada ojo no solo le de caracteristicas unicas al robot, si no que cambie completamente el shader y por lo tanto la forma en la que ve al mundo, tambien lo tengo pensado como un juego en primera persona de estilo rapido como UltraKill.</p>
+                </div>
+
+                <div class="futuro-item">
+                    <span class="futuro-tag">PLANEADO · MÚSICA PROCEDURAL</span>
+                    <h3>Kill the Orchestra</h3>
+                    <p>Este si me gusta como titulo definitivo. Este es en un juego por oleadas con musica procedural donde cada monstruo es en cierta forma, un instrumento musical, y las oleadas de enemigos en su conjunto generan toda la banda sonora del juego, por lo que mientras vas acabando con la oleada, vas destruyendo la cancion.</p>
+                </div>
+
+                <div class="futuro-item">
+                    <span class="futuro-tag">PLANEADO · FAN-GAME</span>
+                    <h3>One Night at Harinalda's</h3>
+                    <p>Aunque idealmente seria mas de una noche, por lo que el titulo seguramente cambie. Este nacio como una idea tras el trabajo de animacion para la materia de animacion 3D, es un fan-game de FNAF con la caracteristica de ser free room (se puede caminar por la pizzeria, o en este caso la panaderia) y no se gana con tiempo si no completando objetivos alrededor del local, lo que te fuerza a estar explorando constantemente el sitio y desarrollar diferentes estrategias para esconderte o escapar de los animatronicos.</p>
+                </div>
+
+                <div class="futuro-item">
+                    <span class="futuro-tag">EN DESARROLLO · MÓVIL 2D</span>
+                    <h3>Radioactive Hamster</h3>
+                    <p>Es un juego pequeño que ya esta por terminar, era una entrega para la materia de Juegos para dispositivos Moviles y debia estar inspirado en un juego llamado "That level again" y ser 2D, donde se repite el mismo nivel siempre pero con un twist cada vez, somos el hamster de Marie Curie intentando escapar de la jaula debido a que fuimos infectados por un parasito radiactivo que nos controla y debemos escapar lo mas rapido posible.</p>
+                </div>
+
+                <div class="futuro-item">
+                    <span class="futuro-tag">PLANEADO · CONVOCATORIA</span>
+                    <h3>Sin título (convocatoria Alcaldía)</h3>
+                    <p>Claramente no es el nombre. Este juego es para participar en una convocatoria de la alcaldia para ganar MONEYYYY, este debe estar enfocado en el storytelling y la construccion del universo en si, toma como inspiracion a Who's Lila el cual es un juego donde el protagonista no tiene emociones, por lo que a la hora de interactuar con NPCs, el jugador debe manualmente mover cada parte de la cara con el mouse para generar las expresiones, yo quiero lograr esto mismo pero con la cara del jugador utilizando la camara, aprovechando la tecnologia de los metaHumans de Unreal Engine</p>
+                </div>
+
+                <div class="futuro-item">
+                    <span class="futuro-tag">EN DESARROLLO · MÓVIL 3D</span>
+                    <h3>Sin título (Bruja y granja explosiva)</h3>
+                    <p>Este lo pensamos hace muy poco tambien para moviles, pero ahora para la entrega final 3D, tenemos los temas de "granja, cristales, terrorismo", por lo que decidimos hacer un juego donde uno es una bruja resentida con la sociedad por lo que decide hacer una granja de animales de cristal explosivos para atacar las ciudades y cobrar venganza.</p>
+                </div>
+
+            </div>
+        </article>
+
+    </main>
+
+    <div class="ascii-box">
+        <pre class="ascii">
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀       ⢀⣾⣶⢦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⠤⡖⢚⠛⡛⢉⠉⠉⢉⠓⠒⠠⠤⢄⣀⠀⠀⠀⠀⠀  ⠀⣠⣴⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⡏⠳⡜⠻⣄⣠⣤⡴⢶⢫⠝⣩⠃⢎⡱⠈⡄⠡⠐⠠⠀⠠⠀⠄⠀⠀⠀⠀⠈⠉⠉⠲⢄⣠⣾⡟⠋⠍⣿⢿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢻⣿⡘⣤⢹⣶⣾⢻⡜⣣⠏⢆⠊⠤⡉⠂⠄⠱⠀⠄⡀⠀⠄⠀⠌⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠠⣍⠀⡤⠇⡼⡼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣏⣿⢿⣾⡟⣏⢞⡵⢎⡱⢊⠌⡔⡐⠠⠄⠈⠁⡉⡀⠠⢄⠂⠤⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡈⠱⢄⠓⢶⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣞⢯⠶⣹⡚⡜⢬⠣⡘⠡⢌⠰⡀⢃⠄⡀⠀⠀⠄⠀⢄⠊⠄⠂⠄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⢿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⢾⣙⠮⣇⠳⢌⡡⢂⠡⢈⠂⠤⠈⠠⠀⠄⡐⠠⢀⠀⡀⠌⢂⠡⢀⠀⢀⠀⡀⢀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡿⣫⢞⣭⢚⢦⡙⠤⠒⡠⢒⠤⣀⣂⣤⣡⣉⢬⣁⠓⡌⢲⡱⣎⡷⣜⣢⣋⣬⣍⣉⣉⡙⠘⠲⣄⠀⠀⠀⠀⠀⡀⠐⢄⠙⢦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣟⡾⣵⢫⡟⡖⢯⡖⣍⠣⡱⣸⣷⣿⡿⣟⣶⣿⣙⠃⠛⠛⠾⣥⣛⣽⣿⡿⠟⠛⢛⣛⣿⣿⣿⢿⣷⣦⡌⡄⢀⠀⡀⠀⠀ ⠢⠈⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣞⡽⣎⡷⣽⢣⣟⣹⡞⡼⣄⠳⣐⡛⡋⠁⣴⣿⣿⣿⣿⣿⡄⠀⠀⢰⡏⢺⣯⡆⠀⢠⣾⣿⣿⣿⣿⣧⠈⠉⠛⣶⠀⡀⠤⠄⠀⠀⠀⠄⠄⠹⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣟⢮⡽⣾⡝⣷⢫⣞⡵⡛⠶⢥⠓⠬⣗⣧⠄⢿⣻⣿⣿⣿⣿⠏⠀⠀⣼⠘⠀⢿⡹⣆⠘⣿⢿⣿⣿⣿⡿⠁⠀⢀⡿⠀⠀⠠⢀⠀⠀⠀⠈⠀⢦⠀⠺⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣟⣮⢯⣟⡶⣟⠧⣟⢮⡳⢭⡚⢦⡛⣌⠿⣞⡿⣦⣛⠾⠟⠛⠉⠀⣀⣼⡟⡀⠁⠀⡻⣝⡷⣬⣛⡿⠟⠛⠁⠀⠠⠜⠁⠀⠀⠀⠀⠀⠀⠀⠀⠆⡀⠣⠀⠐⢳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣫⣟⡾⢯⣾⡽⣞⣻⡜⣧⡹⢦⡙⢖⡩⢦⠹⢍⠟⣮⢭⡭⡭⢴⣰⣾⣿⣿⣼⣧⣍⣲⠭⣴⢯⡓⠮⠭⠭⠥⠄⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠄⠀⠁⢂⠡⢰⡈⠳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⣽⣳⢯⣽⡻⢞⡽⣫⢖⡻⢲⠱⠢⠜⢢⠑⠎⡰⠈⢂⠱⢎⣶⣿⣿⣿⣿⣿⣿⣿⣿⣽⣻⣿⡿⣿⣿⣬⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠐⠀⠐⠠⠀⠀⠁⠀⠀⠄⠀⢣⡀⠻⢦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣽⣻⡾⣽⣻⢶⡻⣝⡺⣱⢎⣝⢣⠃⢇⠹⠤⡉⠦⣁⠒⠠⠈⣽⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣻⢧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠐⠀⠐⠀⠂⠀⠂⡄⠑⠀⡘⠷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⢮⣿⣳⣯⡽⣷⢯⡟⡽⣎⠷⣭⢺⣌⠛⡜⣌⠲⣁⠞⠠⡑⠈⠄⡐⢾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⣷⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠈⢂⠀⠠⠀⠡⠘⠀⠰⠀⠄⡐⠠⠙⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⣾⡝⣿⣻⣽⡿⣽⣛⣮⢽⡳⣭⢻⣜⢣⡎⡽⢰⢨⠱⢌⠒⡡⢀⠉⠰⣉⠻⠿⢿⣿⡿⢿⢿⣿⣿⣿⣿⣿⠿⣿⢿⣿⠿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠒⠀⠂⠊⠀⠒⠐⡈⠁⠒⢀⠂⢡⠂⡁⠈⠳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⢧⣻⣼⣯⡷⣿⣳⣟⡾⣳⡽⣎⡷⢎⡳⣜⠱⣣⠃⡏⢌⠂⠅⡂⠌⠡⢈⠡⠈⠂⠀⠐⠈⠉⠿⠿⠿⠿⠛⡁⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠂⠀⠀⠀⠀⠂⠑⠈⢂⠑⡌⠐⡀⡉⢆⠰⠀⠄⡀⢀⠳⡄⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣸⢳⣿⣳⢯⣾⢯⣟⡷⣟⡾⣵⠯⣝⣮⡝⣮⡱⢎⠳⡰⣙⠰⣈⠘⠤⠑⣈⠁⡒⠄⠁⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀⠀⠀  ⠐⠂⠁⢊⠰⢁⠡⢀⡑⢊⠌⡱⠈⠴⣨⢜⣳⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢠⢷⣿⢯⣟⣿⣞⡿⣞⣿⣽⣻⡽⣿⣞⡶⣹⢶⣹⢋⡗⡱⢌⡱⢀⡘⢠⠁⡄⢃⠐⠈⡁⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⠉⠄⠈⡀⢂⠐⣀⠣⣁⠚⡌⢢⠡⣙⠰⣥⡿⣌⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣼⣾⣿⣿⣿⣟⣾⣽⣻⣿⣞⡿⣽⣳⢯⣽⢳⣎⢧⣫⠜⣥⢋⠴⡡⢐⡡⠘⠠⠁⠊⡀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠀⠀ ⠉⡐⢈⠐⠠⠈⠌⡡⢁⡉⢜⡠⢃⠆⣱⢫⣾⢳⠬⣽⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣳⣯⣿⣯⣟⣿⡷⣯⣿⣽⡳⣞⢧⣓⣏⠦⣍⢲⢡⢣⠌⣅⢃⡉⠄⣀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀ ⠀⠀⠈⠀⡀⠈⠀⠈⠁⠈⡀⠡⢁⠂⢌⠡⢈⠂⡄⢣⡈⢆⡱⣉⠞⡤⣿⣿⣧⠫⡜⡞⡇⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣯⢷⣯⣿⣷⣿⣻⣾⣿⢿⣞⣷⣻⣽⣺⡜⣮⢳⡍⢦⠳⣌⠳⡄⢆⡘⠰⡀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠈⠀⡀⠀⠀⠁⡀⢁⠁⠠⢈⠠⡁⠆⢡⢈⠰⡈⠔⡡⢎⠩⡔⣌⠳⣌⢲⡹⣜⣳⣿⣯⡱⢚⡜⣇⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢸⢳⣿⣿⣿⣿⣛⣾⣽⣿⣿⣿⣿⣾⣿⢿⣯⢷⣯⢷⣻⢵⣋⡞⣧⠳⣌⠳⡜⣢⢁⣃⡐⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⢀⠀⠄⣈⢁⠂⢄⠡⣊⠔⣌⠢⠥⡙⢤⢃⡓⠼⣌⡻⣬⢳⣇⣟⣾⣿⣷⡥⢣⠜⣾⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣾⣻⣿⣿⣿⣿⣽⣻⣿⣿⣿⣿⣿⣿⣿⣿⣻⣿⣾⣯⣟⣮⢷⡹⣎⠿⣬⣳⣹⣤⢳⣤⢲⣤⣍⣦⣔⣤⣠⣀⣄⣀⡀⢀⡀⢀⠀⡀⠀⢀⠀⠀⠄⡀⠦⡈⢌⠡⠆⣜⣠⢃⡖⣩⠎⣵⣩⣛⣵⣫⢷⣻⣾⡽⣾⣿⣿⣏⡕⢪⠝⡇⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢰⣯⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣾⣯⣿⣽⡽⣯⢷⣳⡟⣞⢯⣙⠯⣉⠬⡡⠍⠩⡉⢏⠛⣛⠛⡟⢻⠻⠟⠿⠿⠟⠾⠲⠤⢆⡰⣈⠐⡤⢱⢎⡭⣙⡔⣢⠽⣸⣥⣛⡴⡷⣽⢾⣿⣿⣿⣿⣷⢎⡕⠲⢷⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣼⣾⣿⣿⣿⣿⠆⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣽⣷⣿⣽⣯⣟⣷⣽⣞⣷⣎⢷⡱⣎⡵⣌⡱⢄⢦⡐⢤⣈⢐⡠⢉⣈⣁⠠⣈⢤⣁⢆⣦⣱⣬⣛⡴⣏⣾⣸⣱⢮⡵⣫⢷⢮⣷⣻⣽⣯⣿⣿⣧⣿⢿⣿⣻⡬⡙⣼⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣟⣿⣿⣿⣿⡟⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⣿⣿⣽⣯⣷⣯⣟⣾⣳⣿⣳⣾⢯⣾⢷⣳⣮⢿⣽⣶⣿⣻⣾⣷⣯⣟⣷⡿⣶⣳⣟⣮⣷⣿⣻⣿⣳⣿⣿⣿⣿⣿⣿⣿⣿⣿⡶⣉⠞⡇⠀⠀⠀
+⠀⠀⠀⠀⢸⢻⣿⣿⣿⡿⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣷⣿⣻⣷⣿⣿⣽⣿⣿⣿⣿⣿⣿⣿⠏⠈⣿⣿⣝⠮⣷⠀⠀⠀
+⠀⠀⠀⠀⣸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀⢸⣿⣿⢧⣹⡆⠀⠀
+⠀⠀⠀⢰⢿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀ ⠈⣿⠛ ⠋⢐⢳⠀⠀
+⠀⠀⠀⢸⣻⣿⣿⣿⣿⣾⠇⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀ ⣷⡀⠀ ⠈⣿⠀
+⠀⠀⠀⢸⣿⣿⣿⣿⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀ ⢸⣏⣿ ⠀⢈⢿⠀⠀
+⠀⠀⠀⣿⣾⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⢸⣟⣿⠀ ⠨⢽⠀⠀
+⠀⠀⠀⣯⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⠈⣧⣿⠀ ⢱⣺⠀⠀
+⠀⠀⠀⢻⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⢸⣿⡿⣿⣿⣿⣿⣻⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀    ⣧⣿⠀⡐⠠⣿⠀⠀
+⠀⠀⠀⣼⣿⣿⣿⣿⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡿⣼⣿⣿⣿⣿⣿⣿⡅⠀⠀⠉⠁⠛⠛⠽⠻⠿⢿⣿⣿⠿⣿⣿⣿⣻⣿⢿⣟⣿⣿⡿⠿⠿⣿⡿⠯⠛⠋⠉⠙⣆⣿⣿⣿⣿⡿⣯⣽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⣧⣿⠁⠀⠰⣿⠀⠀
+⠀⠀⠀⣿⣿⣿⣿⣯⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣟⣿⣿⣽⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠉⠉⠉⠉⠉⠉⠉⠈⠉⠉⠉⠀⠀⠀⠀⠀⠀     ⡟⣾⣿⣿⢯⡝⡮⡇⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⢸⣸⠈⠂⢡⣿⠀⠀
+⠀⠀⢰⢿⣿⣿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣯⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀         ⣹⣿⣿⣿⢫⡜⣷⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⢸⡿⡄⠀⢸⣿⠀⠀
+⠀⠀⢸⣿⣿⣿⣿⢷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣷⢿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        ⢸⢽⣿⣿⡻⣼⢿⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⢸⣻⠀⠀⢸⡇⠁⠀
+⠀⠀⣼⣿⣿⢿⣿⡼⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        ⢸⣾⣿⣿⡽⣳⢿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⣼⢿⡄⠀⢹⣧⠀⠀
+⠀⢸⣽⣿⣿⣻⣞⣿⣿⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        ⠈⣿⣿⣿⣽⢻⡼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠀ ⡴⡣⠂⠀⠀⡔⣺⡄⠀
+⠀⣼⣿⣿⣿⣽⢿⡾⣽⣷⠳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀         ⠀⣿⣿⣿⣾⣝⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⢞⠁⠀⠀⠀⠀⡴⣡⣧⠀
+⠀⣿⣿⣿⣿⣯⣟⡿⣧⣛⠇⢿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀         ⣿⣿⣿⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀    ⣴⢣⠂⠀⠀⠐⠀⡓⢸⢧⣾⠀
+⢰⣿⣿⣿⣿⣷⢾⣿⣿⣿⣯⠾⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        ⢰⣻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀  ⠀⣰⠿⠀⣴⣊⠄⠀⢠⢻⡥⣻⣽⠀
+⢸⣻⣿⣿⣿⣿⠎⣝⣻⣿⣿⣷⡛⡄⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        ⢸⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀ ⣰⠇⣎⣽⣿⣿⠿⠀⢸⡖⣌⣿⢾⡄
+⠘⣿⣿⣿⣿⣿⣾⣵⣿⣿⣿⣿⣿⣟⡄⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        ⢸⣿⣿⣿⣿⢾⠀⠀⠀⠀ ⠀⡰⣷⣤⣾⣿⣿⣷⡎⠀⣼⡷⢸⣿⣯⡇
+⠀⠹⣿⣿⣿⣿⣿⣿⣿⣯⣽⣿⣿⣿⢷⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        ⣾⣿⣿⣿⣿ ⠀⠀⠀⠀⠀ ⣷⣿⢲⣿⠃⠸⣿⡷⣿⣿⣿⣽⣿⣻⡅
+⠀⠀⠘⢿⣿⣿⣿⣿⣿⢿⣿⣽⡿⢿⣿⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀       ⠀⣽⣿⣿⣿⣿⡟⠀⠀⠀⠀⢀⣿⣽⣿⠏⡴⣿⣟⣱⣿⢿⣽⣿⣿⡟⠀
+⠀⠀⠀⠀⠉⢿⣿⣿⣿⣾⣛⠿⣿⣟⡟⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀         ⣿⣿⣿⣿⡿⡇⡄⠀⠀⠀⠘⠛⡿⢿⣼⣿⣻⢦⣻⡟⣾⣿⣿⡝⠀⠀
+⠀⠀⠀⠀⠀⠀⠉⠛⠿⣿⣿⣿⣿⣼⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀       ⢀⣿⣿⣿⣿⣿⡇⠁⠀⠀⠀⠀⢠⡿⡿⠛⣳⣿⣿⣿⣿⣿⠟⠋⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣟⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀        ⢸⣿⣿⣷⣿⣿⣧⠀⠀⠀⠀⢸⣹⣿⣿⣷⠿⠿⠟⠋⠉⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⡟⣟⢻⠻⣳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀            ⢀⣾⣯⢗⠬⡹⣿⢏⢧⠀⠀ ⠈⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣜⣲⣽⣟⣾⣓⣇⡘⢧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀          ⠀⠀⣸⣾⣟⣯⢞⣱⠹⣞⢮⣵⠢⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣼⣳⣞⣫⠛⠌⠣⣞⢽⣠⣘⠳⠆⢤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      ⠀⠀   ⠀⣼⣳⣟⣾⣽⣻⢶⣫⠝⣚⣚⠛⡒⢶⣿⣭⣿⣶⡖⡆⠰⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⡎⣿⣷⣿⣿⣿⣾⣤⡙⣾⣿⣿⣿⣍⣠⣙⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀         ⢿⣿⣾⣽⣾⣯⣿⣧⣟⡶⣹⣄⣩⡴⠼⣿⣿⣯⣽⣜⣿⣯⠙⢳⣿⣏⡒⢤⡀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡉⣽⣿⣽⣿⣿⣿⣿⡟⠘⣿⣽⣿⣿⣿⣿⣷⡈⢹⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀       ⠀⠀⠀⠀⠀ ⠙⠛⠛⠿⣿⣿⣿⣾⣿⣷⣻⡼⣿⡄⠘⣿⣿⣷⣯⢿⣿⣦⡀⢻⣿⣿⣦⡧⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣥⣿⣿⣿⣿⣿⣿⣿⣇⢸⣿⣿⣿⣿⣿⣿⣿⣇⢨⣟⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀     ⠀⠀ ⠉⠛⠻⢿⣿⣿⣯⣿⣄⣿⣿⣿⣿⣿⣿⣿⣿⣾⡿⠟⠋⠁⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⠿⠿⠿⠟⠛⢿⣿⣿⣿⣿⡿⠽⠿⠿⡿⢿⠿⡿⣯⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀      ⠀⠀⠀⠀⠀  ⠉⠉⠉⠉⠉⠋⠉⠉⠉⠁⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        </pre>
+    </div>
+
+    <!-- ------------------------------------------------------------------------ FOOTER -------------------------------------------------------------------------------- -->
+    <footer class="footer">
+        UNITY · UNREAL ENGINE · VIDEOJUEGOS
+    </footer>
+
+    <audio id="bgmusic" loop>
+    <source src="../recursos/ExitMusic.MP3" type="audio/mpeg">
+</audio>
+
+<button class="mute-btn" id="mute-btn">&#9834; SONIDO</button>
+
+<script>
+    var audio   = document.getElementById('bgmusic');
+    var btn     = document.getElementById('mute-btn');
+    var playing = false;
+
+    function intentarPlay() {
+        if (!playing) {
+            audio.volume = 0.4;
+            audio.play().then(function() { playing = true; }).catch(function() {});
+        }
+    }
+
+    document.addEventListener('click',   intentarPlay, { once: true });
+    document.addEventListener('keydown', intentarPlay, { once: true });
+
+    btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        intentarPlay();
+        if (audio.muted) {
+            audio.muted = false;
+            btn.innerHTML = '&#9834; SONIDO';
+            btn.classList.remove('muted');
+        } else {
+            audio.muted = true;
+            btn.innerHTML = '&#9834; MUTE';
+            btn.classList.add('muted');
+        }
+    });
+</script>
+
+</body>
+</html>
